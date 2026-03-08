@@ -83,62 +83,102 @@ export default function App() {
   return (
     <div className="bg-gray-50 dark:bg-gray-950 text-gray-800 dark:text-gray-100 transition-colors duration-300">
       {/* NAVBAR */}
-      <nav className="fixed w-full backdrop-blur bg-white/70 dark:bg-gray-900/70 shadow-sm z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <h1 className="font-bold text-xl tracking-wide">Perdy Imam</h1>
+      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full px-4">
+        <div className="max-w-4xl mx-auto">
+          <div
+            className="
+      flex items-center justify-between
+      px-6 py-3
+      rounded-2xl
+      backdrop-blur-lg
+      bg-white/60 dark:bg-gray-900/60
+      border border-white/20 dark:border-gray-700/50
+      shadow-lg
+      transition
+    "
+          >
+            {/* BRAND */}
+            <a
+              href="#"
+              className="font-semibold text-lg tracking-wide hover:opacity-80 transition"
+            >
+              Perdy Imam
+            </a>
 
-          <div className="hidden md:flex gap-8 font-medium">
-            <a href="#about" className="hover:text-blue-500 transition">
-              About
-            </a>
-            <a href="#skills" className="hover:text-blue-500 transition">
-              Skills
-            </a>
-            <a href="#projects" className="hover:text-blue-500 transition">
-              Projects
-            </a>
-            <a href="#contact" className="hover:text-blue-500 transition">
-              Contact
-            </a>
+            {/* DESKTOP MENU */}
+            <div className="hidden md:flex items-center gap-8 text-sm font-medium">
+              <a href="#about" className="hover:text-blue-500 transition">
+                About
+              </a>
+              <a href="#skills" className="hover:text-blue-500 transition">
+                Skills
+              </a>
+              <a href="#projects" className="hover:text-blue-500 transition">
+                Projects
+              </a>
+              <a href="#contact" className="hover:text-blue-500 transition">
+                Contact
+              </a>
+            </div>
+
+            {/* RIGHT SIDE */}
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => setDarkMode(!darkMode)}
+                className="
+            text-sm px-3 py-1.5
+            rounded-xl
+            border border-gray-300 dark:border-gray-700
+            hover:bg-gray-200 dark:hover:bg-gray-800
+            transition
+          "
+              >
+                {darkMode ? "Light" : "Dark"}
+              </button>
+
+              <button
+                className="md:hidden text-xl"
+                onClick={() => setMenuOpen(!menuOpen)}
+              >
+                ☰
+              </button>
+            </div>
           </div>
 
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className="px-3 py-1 rounded-lg border border-gray-300 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-800 transition"
+          {/* MOBILE MENU */}
+          {menuOpen && (
+            <div
+              className="
+        mt-3
+        rounded-2xl
+        backdrop-blur-lg
+        bg-white/70 dark:bg-gray-900/70
+        border border-white/20 dark:border-gray-700/50
+        shadow-lg
+        p-6
+        flex flex-col gap-4
+        md:hidden
+      "
             >
-              {darkMode ? "Light" : "Dark"}
-            </button>
-
-            <button
-              className="md:hidden text-2xl"
-              onClick={() => setMenuOpen(!menuOpen)}
-            >
-              ☰
-            </button>
-          </div>
+              <a href="#about" onClick={() => setMenuOpen(false)}>
+                About
+              </a>
+              <a href="#skills" onClick={() => setMenuOpen(false)}>
+                Skills
+              </a>
+              <a href="#projects" onClick={() => setMenuOpen(false)}>
+                Projects
+              </a>
+              <a href="#contact" onClick={() => setMenuOpen(false)}>
+                Contact
+              </a>
+            </div>
+          )}
         </div>
-
-        {menuOpen && (
-          <div className="md:hidden px-6 pb-4 flex flex-col gap-4 bg-white dark:bg-gray-900">
-            <a href="#about" onClick={() => setMenuOpen(false)}>
-              About
-            </a>
-            <a href="#skills" onClick={() => setMenuOpen(false)}>
-              Skills
-            </a>
-            <a href="#projects" onClick={() => setMenuOpen(false)}>
-              Projects
-            </a>
-            <a href="#contact" onClick={() => setMenuOpen(false)}>
-              Contact
-            </a>
-          </div>
-        )}
       </nav>
 
       {/* HERO */}
-      <section className="min-h-screen flex items-center justify-center text-center px-6 pt-32 relative overflow-hidden">
+      <section className="min-h-screen flex items-center justify-center text-center px-6 pt-40 relative overflow-hidden">
         {/* subtle background glow */}
         <div className="absolute w-[500px] h-[500px] bg-blue-500/10 blur-3xl rounded-full top-[-100px] left-1/2 -translate-x-1/2"></div>
 
@@ -252,7 +292,7 @@ export default function App() {
                 key={project.id}
                 className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition border border-gray-200 dark:border-gray-800"
               >
-                <span className="text-sm bg-blue-100 dark:bg-blue-900 text-blue-600 px-3 py-1 rounded-full">
+                <span className="text-sm bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-white px-3 py-1 rounded-full">
                   {project.category}
                 </span>
                 <h4 className="text-xl font-bold mt-4 mb-3">{project.title}</h4>
@@ -319,14 +359,16 @@ export default function App() {
 
               <div className="flex flex-col gap-4">
                 <a
-                  href="mailto:emailanda@gmail.com"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=perdyimam49@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-3 hover:text-blue-600 transition"
                 >
-                  <FiMail /> emailanda@gmail.com
+                  <FiMail /> perdyimam49@gmail.com
                 </a>
 
                 <a
-                  href="https://github.com/"
+                  href="https://github.com/perdy49"
                   target="_blank"
                   className="flex items-center gap-3 hover:text-blue-600 transition"
                 >
@@ -334,7 +376,7 @@ export default function App() {
                 </a>
 
                 <a
-                  href="https://linkedin.com/"
+                  href="https://www.linkedin.com/in/perdy-imam-502b3b387/"
                   target="_blank"
                   className="flex items-center gap-3 hover:text-blue-600 transition"
                 >
@@ -354,7 +396,7 @@ export default function App() {
                 lebih lanjut.
               </p>
               <a
-                href="/cv.pdf"
+                href="/src/document/CV-Perdy.pdf"
                 target="_blank"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition"
               >
