@@ -610,7 +610,7 @@ export default function App() {
               </p>
 
               <a
-                href="/src/document/CV-Perdy.pdf"
+                href={`${import.meta.env.BASE_URL}CV-Perdy.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 border border-[#24251f] px-5 py-3 text-xs font-semibold uppercase tracking-widest transition hover:bg-[#24251f] hover:text-white dark:border-[#77766d] dark:hover:bg-white dark:hover:text-black"
